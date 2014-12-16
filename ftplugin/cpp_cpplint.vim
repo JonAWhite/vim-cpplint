@@ -15,6 +15,10 @@ let b:loaded_cpplint_ftplugin=1
 
 let s:cpplint_cmd="cpplint.py"
 
+if !exists("g:cpplint_root") {
+    let g:cpplint_root="" 
+}
+
 if !exists("*Cpplint()")
     function Cpplint()
         if !executable(s:cpplint_cmd)
