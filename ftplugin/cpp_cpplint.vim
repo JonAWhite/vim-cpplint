@@ -1,11 +1,11 @@
 "
 " C++ filetype plugin for running cpplint.py
 " Language:     C++ (ft=cpp)
-" Maintainer:   Thomas Chen <funorpain@gmail.com>
+" Modifier:     Jonathan White (jonathan.jawhite@gmail.com)
 " Version:      Vim 7 (may work with lower Vim versions, but not tested)
 " URL:          http://example.com/
 "
-" Code is borrowed from vim-flake8 and slightly modified.
+" Code is forked from funorpain/vim-cpplint 
 "
 " Only do this when not done yet for this buffer
 if exists("b:loaded_cpplint_ftplugin")
@@ -36,7 +36,7 @@ if !exists("*Cpplint()")
 
         " perform the grep itself
         let &grepformat="%f:%l: %m"
-        let &grepprg=s:cpplint_cmd
+        let &grepprg=s:cpplint_cmd . " --extensions='h,cxx'" . " --root=" . g:cpplint_root
         silent! grep! %
 
         " restore grep settings
